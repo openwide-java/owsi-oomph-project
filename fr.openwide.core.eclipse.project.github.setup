@@ -266,7 +266,7 @@
       xsi:type="git:GitCloneTask"
       id="git.clone.fr.openwide.core.eclipse.project"
       location="${user.home}/git/${git.clone.name}"
-      remoteURI="git@github.com:${git.group.name}/${git.project.name}.git"
+      remoteURI="${repository.choice}"
       pushURI=""
       checkoutBranch="${git.clone.branch}">
     <annotation
@@ -298,17 +298,17 @@
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
-      name="git.project.name"
+      name="repository.choice"
       storageURI="scope://Workspace"
-      label="Nom du projet git">
-    <description>Nom du projet github (correspond à &lt;project> dans l'url https://github.com/&lt;group>/&lt;project>)</description>
+      label="Url du dépôt">
+    <description>Url du dépot</description>
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
-      name="git.group.name"
+      name="git.project.name"
       storageURI="scope://Workspace"
-      label="Nom du groupe ou du compte qui héberge le dépôt git">
-    <description>Nom du projet github (correspond à &lt;group> dans l'url https://github.com/&lt;group>/&lt;project>)</description>
+      label="Nom du projet git">
+    <description>Nom du projet (correspond à la dernière partie du chemin dans l'url du dépôt)</description>
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
@@ -339,7 +339,7 @@
       defaultValue="$${git.project.name}-webapp"
       storageURI="scope://Workspace"
       label="Nom de la webapp">
-    <description>Nom de la webapp qui doit être déployée ( par défaut gitlab.project-webapp )</description>
+    <description>Nom de la webapp qui doit être déployée</description>
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"

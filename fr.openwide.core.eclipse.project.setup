@@ -298,26 +298,17 @@
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
-      name="gitlab.project.name"
+      name="git.project.name"
       storageURI="scope://Workspace"
-      label="Nom du projet gitlab">
-    <description>Nom du projet gitlab (correspond à &lt;project> dans l'url git.projects.openwide.fr:open-wide/&lt;project>.git</description>
+      label="Nom du projet git">
+    <description>Nom du projet (correspond à la dernière partie du chemin dans l'url du dépôt)</description>
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
       name="repository.choice"
       storageURI="scope://Workspace"
-      label="Choix du dépôt (github ou gitlab)">
-    <choice
-        value="git@git.projects.openwide.fr:${git.group.name}/${gitlab.project.name}.git"
-        label="Dépôt Gitlab Openwide"/>
-    <choice
-        value="git@github.com:${git.group.name}/${gitlab.project.name}.git"
-        label="Dépôt Github"/>
-    <choice
-        value="git@git.smile.fr:${git.group.name}/${gitlab.project.name}.git"
-        label="(Dépôt Gitlab Smile)"/>
-    <description>Choix du dépot (gitlab ou github)</description>
+      label="Url du dépôt">
+    <description>Url du dépot</description>
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
@@ -328,15 +319,8 @@
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
-      name="git.group.name"
-      storageURI="scope://Workspace"
-      label="Nom du groupe git">
-    <description>Nom du groupe dit dans lequel est situé le projet</description>
-  </setupTask>
-  <setupTask
-      xsi:type="setup:VariableTask"
       name="maven.project.name"
-      defaultValue="$${gitlab.project.name}"
+      defaultValue="$${git.project.name}"
       storageURI="scope://Workspace"
       label="Nom du projet maven">
     <description>Nom du projet maven de l'application</description>
@@ -352,10 +336,10 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="webapp.name"
-      defaultValue="$${gitlab.project.name}-webapp"
+      defaultValue="$${git.project.name}-webapp"
       storageURI="scope://Workspace"
       label="Nom de la webapp">
-    <description>Nom de la webapp qui doit être déployée ( par défaut gitlab.project-webapp )</description>
+    <description>Nom de la webapp qui doit être déployée</description>
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
